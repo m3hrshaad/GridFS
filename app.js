@@ -17,7 +17,7 @@ app.use(methodOverride('_method'));
 app.set('view engine', 'ejs');
 
 // Mongo URI
-const mongoURI = 'mongo database address'
+const mongoURI = 'add mongodb address';
 
 // create mongo connection
 const conn = mongoose.createConnection(mongoURI);
@@ -147,21 +147,10 @@ app.delete('/files/:id', (req, res) => {
     if (err) {
       return res.status(404).json({ err: err });
     }
-
   });
   res.redirect('/')
 });
 
-app.delete('/chunks/:files_id', (req, res) => {
-  gfs.chunks.deleteAll({files_id: new mongoose.Types.ObjectId(req.params.files_id)}, (err, gridStore) => {
-    console.log(new mongoose.Types.ObjectId(req.params.files_id))
-    if (err) {
-      return res.status(404).json({ err: err });
-    }
-
-  });
-  res.redirect('/')
-});
 
 
 const port = 5000;
